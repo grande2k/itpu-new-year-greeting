@@ -1,0 +1,340 @@
+@import "fonts"
+@import "base"
+@import "vars"
+
+@keyframes snowing 
+	0%
+		background-position: 0 0
+
+	100%
+		background-position: 100px 500px
+
+@keyframes fade 
+	0%
+		opacity: 0
+
+	100%
+		opacity: 1
+
+@keyframes bounce 
+	0%, 40%, 60%, 100%
+		transform: scale(1.0)
+
+	20%
+		transform: scale(1.075)
+
+@keyframes gift 
+	0%
+		transform: scale(1)
+	50%
+		transform: scale(1.1)
+	100%
+		transform: scale(1)
+
+#fireworks
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: 1
+
+	
+#header
+	padding: 10px 0
+	.header-logo
+		margin: 0 auto
+		position: relative
+		left: -20px
+
+#main
+	flex: auto
+	height: 100%
+	.slides
+		height: 100%
+		& > *
+			height: 100%
+			display: flex
+			flex-direction: column
+			justify-content: center
+
+		.wish-slide
+			visibility: hidden
+			opacity: 0
+			z-index: -1
+			position: absolute
+			top: 0
+			left: 50%
+			transform: translate(-50%)
+			width: 100%
+			&.active
+				visibility: visible
+				opacity: 1
+				z-index: 2
+				animation: fade 1.5s ease
+
+			h1, h2
+				margin: 0 0 1.5rem 0
+				font-size: 6rem
+				font-style: italic
+				font-weight: bold
+				line-height: 1
+
+			p 
+				margin: 0 0 2rem 0
+				font-weight: 400
+				font-size: 2rem
+
+			.special-wish__tip
+				display: block
+				font-size: 2rem
+				display: inline-block
+				margin-bottom: 1rem
+				padding-top: 2rem
+				border-top: 1px solid $accent
+
+			.show-wish
+				background-color: transparent
+				border: 2px solid $accent
+				padding: 0
+				width: 3rem
+				height: 3rem
+				border-radius: 50%
+				cursor: pointer
+				display: flex
+				align-items: center
+				justify-content: center
+				transition: all 0.3s ease
+				z-index: 2
+				margin: 0 auto .75rem auto
+				position: relative
+				animation: bounce 3s ease infinite
+				&:hover
+					background-color: $accent
+					img 
+						filter: brightness(0)
+
+				&.hide
+					opacity: 0
+					height: 0
+					margin-top: 0
+					margin-bottom: 0
+
+				img
+					position: absolute
+					top: 50%
+					left: 50%
+					transform: translate(-50%, -50%)
+					width: 1.5rem
+					transition: all 1s ease
+
+			.btn-control
+				background-color: transparent
+				border: 1px solid $accent
+				outline: none
+				display: flex
+				align-items: center
+				justify-content: center
+				cursor: pointer
+				border-radius: 50%
+				width: 3.75rem
+				height: 3.75rem
+				transition: all 0.3s ease
+				&.prev-slide
+					margin-right: 2rem
+					img 
+						position: relative
+						transform: rotate(180deg)
+				img 
+					width: 1.875rem
+					transition: all 0.3s ease
+				&:hover
+					background-color: $accent
+					img 
+						filter: brightness(0)
+
+
+			.special-wish
+				margin-bottom: 2rem
+				transition: all 1s ease
+				position: relative
+				&.show 
+					& > *
+						filter: blur(0)
+				& > *
+					filter: blur(6px)
+					transition: all 1s ease
+					position: relative
+					z-index: 1
+					&:not(:last-child)
+						margin-right: 2rem
+					span
+						display: block
+						text-align: left
+						margin-bottom: .25rem
+						font-size: 1.5rem
+						letter-spacing: 1px
+				& > p
+					display: inline-block
+					padding: 1rem
+					border: 1px solid $accent
+					font-size: 1.625rem
+					max-width: 500px
+					border-radius: .75rem
+					font-weight: normal
+					margin: 0
+					font-style: italic
+					background-color: $accent
+					color: $black
+
+			&.students-wish
+				.special-wish 
+					img 
+						width: 300px
+
+			&.teachers-wish
+				.special-wish 
+					& > *
+						&:not(:last-child)
+							margin-right: 4rem
+						span 
+							margin-bottom: 0.5rem
+							
+			&.gift-slide
+				.gift-wrapper
+					cursor: pointer
+					transition: all 0.5s ease
+					img
+						animation: gift 2s ease infinite
+					&.open
+						height: 0
+						transform: scale(0)
+						img
+							animation-play-state: paused
+				.my-gift
+					transition: all 0.5s ease
+					transform: scale(0)
+					height: 0
+					&.active
+						height: auto
+						transform: scale(1)
+					img 
+						position: relative
+						left: 40px
+					.btn
+						margin-top: 1rem
+						
+
+
+#footer
+	padding: 15px 10px 
+	text-align: center
+	p 
+		margin: 0
+		font-style: italic
+		font-size: 1.25rem
+		letter-spacing: 2px
+
+
+#santa-popup
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	visibility: hidden
+	z-index: -1
+	display: flex
+	align-items: center
+	justify-content: center
+	background-color: rgba(0, 0, 0, 0.3)
+	opacity: 0
+	transition: opacity 1s ease
+	&.active
+		opacity: 1
+		visibility: visible
+		z-index: 4
+
+	.santa-popup__wrapper
+		background-color: $accent
+		border-radius: 1.5rem
+		max-width: 600px
+		width: 95%
+		padding: 1.5rem
+		color: $black
+		img 
+			width: 250px
+			margin: 0 auto
+		h3 
+			font-size: 2.5rem
+			font-style: italic
+			font-weight: bold
+			margin: 1rem 0
+		p 
+			margin: 0 0 1rem 0
+			font-size: 1.5rem
+		.santa-option
+			margin-bottom: 1rem
+			cursor: pointer
+			font-size: 1.25rem
+			font-style: italic
+			line-height: 1
+			user-drag: none
+			-webkit-user-drag: none
+			user-select: none
+			-moz-user-select: none
+			-webkit-user-select: none
+			-ms-user-select: none
+			.santa-radio
+				display: block
+				width: 1.25rem
+				height: 1.25rem
+				min-width: 1.25rem
+				border: 1px solid $red
+				border-radius: 50%
+				margin-right: .5rem
+				background-color: transparent
+				position: relative
+				&::before 
+					content: ''
+					position: absolute
+					top: 50%
+					left: 50%
+					transform: translate(-50%, -50%)
+					background-color: $red
+					width: 0.825rem
+					height: 0.825rem
+					min-width: 0.825rem
+					border-radius: inherit
+					opacity: 0
+					transition: all 0.1s ease
+			&.selected
+				.santa-radio::before 
+					opacity: 1
+
+		#get-gift
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			background-color: $red
+			border: 1px solid $red
+			outline: none
+			color: $accent
+			border-radius: .5rem
+			cursor: pointer
+			padding: 10px
+			width: 150px
+			line-height: 1
+			height: 50px
+			font-size: 1.325rem
+			font-style: italic
+			margin-top: .5rem
+			&:disabled
+				background-color: $disabled
+				border-color: $disabled
+				cursor: default
+
+
+
+
+@import "media"
