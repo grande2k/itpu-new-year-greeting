@@ -7,8 +7,8 @@ import { startFireworks } from './fireworks.js'
 import AOS from 'aos'
 
 $(document).ready(function() {
-    const background_music = new Audio('/public/media/let-it-snow.mp3');
-    const fireworks = new Audio('/public/media/fireworks.mp3');
+    const background_music = new Audio('./media/let-it-snow.mp3');
+    const fireworks = new Audio('./media/fireworks.mp3');
 
     AOS.init({
         duration: 800,
