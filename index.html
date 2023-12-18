@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico"/>
     <title>ITPU New Year's Greeting by Amir Mirgaliev</title>
-    <style>
-      body {
-        background-image: url('/public/images/snow-bg.jpg');
-      }
-    </style>
   </head>
   <body>
+    <div class="background">
+      <picture>
+        <source media="(max-width: 499px)" srcset="/public/images/snow-bg-mobile.png"/>
+        <source media="(min-width: 500px)" srcset="/public/images/snow-bg.png"/>
+        <img src="/public/images/snow-bg.png" alt="background"/>
+      </picture>
+    </div>
+
     <header id="header" data-aos="fade-down">
       <img src="/public/images/logo.svg" alt="logo" class="img-resp header-logo">
     </header>
